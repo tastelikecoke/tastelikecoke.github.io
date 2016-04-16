@@ -1,0 +1,42 @@
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2em;
+    padding: 30px 0px;
+    margin: 0px;
+    color: white;
+    background-color: black;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 30px 0px;
+}
+
+.return {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 30px 0px;
+    display: block;
+}
+
+.entry {
+    padding: 10px;
+}
+.name {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.details {
+    color: #999;
+
+}
+
+.item-preview:hover {
+    opacity: 0.8;
+}
