@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+    <title>Responsive Side Menu &ndash; Layout Examples &ndash; Pure</title>
+    <link rel="stylesheet" href="css/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="#">Games</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#professional" class="pure-menu-link">Professional</a></li>
+                <li class="pure-menu-item"><a href="#concept" class="pure-menu-link">Concept</a></li>
+                <li class="pure-menu-item"><a href="#public" class="pure-menu-link">Game Jam</a></li>
+
+                <li class="pure-menu-item"><a href="#contact" class="pure-menu-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>Portfolio</h1>
+        </div>
+
+        <div class="content">
+            <h1 class="content-head">About Me</h2>
+            <p>
+                Hi! My name is Jeru Mercado. I am a game software engineer.
+            </p>
+        </div>
+        <div class="content">
+            <a name="professional">
+                <h1 class="content-head">Professional Game Projects</h1>
+            </a>
+
+            <h2 class="content-subhead">Altitude Games: Dragon Idle Adventure</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://www.altitude-games.com/wp-content/uploads/2020/07/banner-dragon-idle-1349x0.jpg">
+                </div>
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://i2.wp.com/www.altitude-games.com/wp-content/uploads/2020/07/Screenshot.jpg">
+                </div>
+            </div>
+            <p>
+                Lead Game Engineer for Dragon Idle Adventure. Responsible for managing all tech decisions for the game, general feature development together with bug fixing, and implementation of SDKs.
+            </p>
+            <p>
+                Link to page: <a href="https://www.altitude-games.com/games/dragon-idle-adventure/">altitude-games.com/games/dragon-idle-adventure</a>
+            </p>
+            <p>
+                <a href="https://play.google.com/store/apps/details?id=com.kongregate.mobile.dragonidle.google&hl=en_US">Get on Play Store</a>
+                |
+                <a href="https://apps.apple.com/us/app/dragon-idle-adventure/id1487722667?mt=8">Get On App Store</a>
+            </p>
+
+            <h2 class="content-subhead">Altitude Games: Kung Fu Clicker</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://www.altitude-games.com/wp-content/uploads/2018/11/KFC_1600x900_game_banner-1349x0.jpg">
+                </div>
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://i2.wp.com/www.altitude-games.com/wp-content/uploads/2020/07/screen-kfc-1.jpg">
+                </div>
+            </div>
+            <p>
+                Game Engineer for Kung Fu Clicker. Responsible for UI features, bug fixing, limited time events implementation and server support for the game.
+            </p>
+            <p>
+                Link to page: <a href="https://www.altitude-games.com/games/kung-fu-clicker/">altitude-games.com/games/kung-fu-clicker</a>
+            </p>
+            <p>
+                <a href="https://play.google.com/store/apps/details?id=com.pikpok.dojo.play">Get on Play Store</a>
+                |
+                <a href="https://apps.apple.com/ph/app/id1401010115?ign-mpt=uo%3D4&pt=169619">Get On App Store</a>
+            </p>
+
+            <h2 class="content-subhead">Altitude Games: Dream Defense</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://www.altitude-games.com/wp-content/uploads/2016/10/DD_web-banner_2016-1349x0.jpg">
+                </div>
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://i1.wp.com/www.altitude-games.com/wp-content/uploads/2016/10/Screen-5.jpg">
+                </div>
+            </div>
+            <p>
+                Junior Game Engineer for Dream Defense. Responsible for bug fixing, cloud save implementation and game features (especially the player skinning system and rewards).
+            </p>
+            <p>
+                Link to page: <a href="https://www.altitude-games.com/games/dream-defense/">altitude-games.com/games/dream-defense</a>
+            </p>
+            <p>
+                <a href="https://play.google.com/store/apps/details?id=com.altitude.dreamdefense">Get on Play Store</a>
+                |
+                <a href="https://apps.apple.com/us/app/dream-defense/id1078573759?ls=1">Get On App Store</a>
+            </p>
+        </div>
+        <div class="content">
+            <a name="concept">
+                <h1 class="content-head" >Concept Projects</h1>
+            </a>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="img/rhythms_1.png">
+                </div>
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="img/rhythms_2.png">
+                </div>
+            </div>
+            <h2 class="content-subhead">Peypey: 5-button rhythm game</h2>
+            <p>
+                This is a concept for a 5-button rhythm game imitating the layout of Museca. This game uses Phaser.js as its game engine.
+            </p>
+            <p>
+                Link to codebase: <a href="https://github.com/tastelikecoke/peypey">github.com/tastelikecoke/peypey</a>
+            </p>
+            <p>
+                <a href="https://tastelikecoke.itch.io/test-game2">Play on itch.io</a>
+            </p>
+        </div>
+        <div class="content">
+            <a name="public">
+            <h1 class="content-head">Game Jam Projects</h1>
+            </a>
+            <p>
+                These are samples of my code work during my participation to game jams such as Global Game Jam and GMTK 2020.
+            </p>
+
+            <h2 class="content-subhead">GGJ 2020: Brightseed</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square real-cropped">
+                    <img class="pure-img-responsive" src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/62471/ggj_bs_still5.png">
+                </div>
+                <div class="pure-u-1-2 cropped-square real-cropped">
+                    <img class="pure-img-responsive" src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/62471/ggj_bs_still1_0.png">
+                </div>
+            </div>
+            <p>
+                I belong to a 5-man team for this game jam as a coder and technical artist.
+            </p>
+            <p>
+                Link to playable game: https://soupware.itch.io/brightseed
+            </p>
+
+
+            <h2 class="content-subhead">GMTK 2020: Drone Jam</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="img/drone-jam.png">
+                </div>
+                <div class="pure-u-1-2 cropped-square">
+                    <img class="pure-img-responsive" src="https://img.itch.zone/aW1hZ2UvNjk3NjY4LzM4NDU1NTYuZ2lm/147x117%23/9N2Wr4.gif">
+                </div>
+            </div>
+            <p>
+                I belong to a 2-man team for this game jam as a coder and technical artist.
+            </p>
+            <p>
+                Link to playable game: https://tastelikecoke.itch.io/drone-jam
+            </p>
+
+            <h2 class="content-subhead">GGJ 2019: Homeland Frontline</h2>
+            <p>
+                I belong to a one-man team for this game jam as a coder and artist.
+            </p>
+            <p>
+                Link to playable game: https://tastelikecoke.itch.io/drone-jam
+            </p>
+
+            <h2 class="content-subhead">GGJ 2017: Mad Maxine</h2>
+            <p>
+                I belong to a three-man team for this game jam as a technical artist.
+            </p>
+            <p>
+                Link to playable game: https://globalgamejam.org/2017/games/mad-maxine
+            </p>
+
+            <h2 class="content-subhead">Ludum Dare 41: Memories ~ of a Gacha Tale</h2>
+            <p>
+                Ludum Dare entry.  
+            </p>
+        </div>
+        <div class="content">
+            <a name="public">
+            <h1 class="content-head">Illustration Work</h1>
+            </a>
+            <p>
+                These are samples of my code work during my participation to game jams such as Global Game Jam and GMTK 2020.
+            </p>
+
+            <h2 class="content-subhead">GGJ 2020: Brightseed</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-2 cropped-square real-cropped">
+                    <img class="pure-img-responsive" src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/62471/ggj_bs_still5.png">
+                </div>
+                <div class="pure-u-1-2 cropped-square real-cropped">
+                    <img class="pure-img-responsive" src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/62471/ggj_bs_still1_0.png">
+                </div>
+            </div>
+            <p>
+                I belong to a 5-man team for this game jam as a coder and technical artist.
+            </p>
+            <p>
+                Link to playable game: https://soupware.itch.io/brightseed
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/ui.js"></script>
+
+</body>
+</html>
