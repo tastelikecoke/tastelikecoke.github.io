@@ -1,5 +1,8 @@
+
+
 body {
     color: #000;
+    font-family: 'Overpass';
 }
 
 .pure-img-responsive {
@@ -120,6 +123,18 @@ The content `<div>` is where all your content goes.
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+a:link {
+    color: rgb(90, 116, 128);
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+a:visited{
+    color: rgb(90, 116, 128);
+    text-decoration: none;
 }
 
 /*
