@@ -119,7 +119,7 @@ var Scene1 = new Phaser.Class({
 		{
 			this.hasPopup = true;
 			this.shareString = "DDRdle " + this.score.toString() + "/" + this.maxScore.toString() + "\n" + this.shareString;
-			this.shareString += "\ntastelikecoke.github.com/ddrdle"
+			this.shareString += "\ntastelikecoke.github.io/ddrdle"
 			document.getElementById("modal").style.display = "block";
 			document.getElementById("result").innerHTML = this.score.toString() + "/" + this.maxScore.toString();
 			//document.getElementById("result").innerHTML = this.shareString.replaceAll("\n","<br />");
@@ -132,7 +132,6 @@ var Scene1 = new Phaser.Class({
 			this.pressEvent = globalPressEvent;
 			globalPressEvent = 0;
 		}
-		console.log(this.pressEvent);
 		if(this.currentBeats[0].dir % 2 == 1)
 		{
 			this.left.y = 48 + (-currentBeatDistance) / 2.5;
@@ -209,7 +208,6 @@ var Scene1 = new Phaser.Class({
 			{
 				if(this.pressEvent != 0)
 				{
-					console.log("miss");
 					this.unhit = false;
 					this.pressEvent = 0;
 					colorButtons(this, "grey");
@@ -219,7 +217,6 @@ var Scene1 = new Phaser.Class({
 			{
 				if(this.pressEvent == this.currentBeats[0].dir)
 				{
-					console.log("hit");
 					this.unhit = false;
 					this.pressEvent = 0;
 					this.score += 50;
@@ -227,7 +224,6 @@ var Scene1 = new Phaser.Class({
 				}
 				else if(this.pressEvent != 0)
 				{
-					console.log("miss");
 					this.unhit = false;
 					this.pressEvent = 0;
 					colorButtons(this, "grey");
@@ -237,7 +233,6 @@ var Scene1 = new Phaser.Class({
 			{
 				if(this.pressEvent == this.currentBeats[0].dir)
 				{
-					console.log("perfect");
 					this.unhit = false;
 					this.pressEvent = 0;
 					this.score += 100;
@@ -245,7 +240,6 @@ var Scene1 = new Phaser.Class({
 				}
 				else if(this.pressEvent != 0)
 				{
-					console.log("miss");
 					this.unhit = false;
 					this.pressEvent = 0;
 					colorButtons(this, "grey");
@@ -279,7 +273,6 @@ var config = {
 }
 
 var buttonPress = function(number){
-	console.log("pressed");
 	globalPressEvent = globalPressEvent | number;
 	return function(){
 	}
