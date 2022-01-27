@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0"/>
+		<style type="text/css">
+			body
+			{
+				display: flex;
+				justify-content: center;
+				font-family: Arial, sans-serif;
+			}
+			main {
+				flex-grow: 1;
+				max-width: 480px;
+			}
+			input {
+				display: block;
+				width: 100%;
+			}
+			input.button {
+				padding: 5px;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h2>Youtube Livestream Real Time</h2>
+			<p>
+				You ever remember a great moment in time in a Youtube livestream (like when you superchatted or something), but don't know the timestamp once the live stream is finished? No? Ok.
+			</p>
+			<p>
+				Good for you, but with this tool, you can enter a livestream Youtube video and a real date time and get a timestamped youtube URL that jumps to that moment.
+			</p>
+			<p>
+				URL: <input type="text" name="url" class="url" value="https://www.youtube.com/watch?v=6HJPHe8kI9w" />
+			</p>
+			<p>
+				Real Time of Viewing: <input type="datetime-local" name="date" class="date" />
+			</p>
+			<input class="button" type="submit" value="Go to Real Time" onclick="checkFunction()" />
+			<div class="result"></div>
+			<img src="" />
+			<div class="titlename"></div>
+		</main>
+		<script type="text/javascript">
+			var iso8601DurationRegex = /(-)?P(?:([.,\d]+)Y)?(?:([.,\d]+)M)?(?:([.,\d]+)W)?(?:([.,\d]+)D)?T(?:([.,\d]+)H)?(?:([.,\d]+)M)?(?:([.,\d]+)S)?/;
+			durationGet = function (iso8601Duration) {
+				var matches = iso8601Duration.match(iso8601DurationRegex);
+
+				return {
+					sign: matches[1] === undefined ? '+' : '-',
+					years: matches[2] === undefined ? 0 : matches[2],
+					months: matches[3] === undefined ? 0 : matches[3],
+					weeks: matches[4] === undefined ? 0 : matches[4],
+					days: matches[5] === undefined ? 0 : matches[5],
+					hours: matches[6] === undefined ? 0 : matches[6],
+					minutes: matches[7] === undefined ? 0 : matches[7],
+					seconds: matches[8] === undefined ? 0 : matches[8]
+				};
+			};
+			durationShow = function (milliseconds) {
+				var out = "";
+				if(milliseconds < 0) out += "negative";
+				if(milliseconds < 0) milliseconds = -milliseconds;
+				if(milliseconds/(86400*1000) >= 1)
+					out += Math.floor(milliseconds/(86400*1000)).toString() + " days ";
+				if(milliseconds/(3600*1000) >= 1)
+					out += (Math.floor(milliseconds/(3600*1000)) % 24).toString() + " hours ";
+				if(milliseconds/(60*1000) >= 1)
+					out += (Math.floor(milliseconds/(60*1000)) % 60).toString() + " minutes ";
+				if(milliseconds/(1000) >= 1)
+					out += (Math.floor(milliseconds/(1000)) % 60).toString() + " seconds ";
+				if(milliseconds == 0)
+					out += "0 seconds";
+				return out;
+			};
+			
+			async function checkFunction(){
+				var rawUrl = document.querySelector('input.url').value;
+				var getUrlRe = /.+(?:\/|\?v=)(.+)/;
+				var urlMatch = rawUrl.match(getUrlRe);
+				var urlString = "";
+				if(urlMatch)
+					var urlString = urlMatch[1];
+				else
+					return;
+				const response = await fetch("https://www.googleapis.com/youtube/v3/videos?id="+ urlString + "&key=AIzaSyDotueD194LWmb8jWbb_-5XkvmxfPe7tZI&part=snippet,contentDetails,liveStreamingDetails&fields=items(id,snippet,contentDetails,liveStreamingDetails)", {
+					method: 'GET',
+					mode: 'cors'
+				});
+				var data = await response.json();
+				if(data.items && data.items.length > 0)
+				{
+					var fetchedId = data.items[0].id;
+					if(urlString == fetchedId)
+					{
+						if(!data.items[0].liveStreamingDetails)
+						{
+							document.querySelector('div.result').innerHTML = "Youtube URL isn't a livestream.";
+							document.querySelector('img').src = data.items[0].snippet.thumbnails.default.url;
+							return;
+						}
+						var startDate = new Date(data.items[0].liveStreamingDetails.actualStartTime);
+						var endDate = new Date(data.items[0].liveStreamingDetails.actualEndTime);
+						var duration = durationGet(data.items[0].contentDetails.duration);
+
+						document.querySelector('div.result').innerHTML = startDate.toString();
+						document.querySelector('img').src = data.items[0].snippet.thumbnails.default.url;
+						document.querySelector('.titlename').textContent = data.items[0].snippet.title;
+
+						var viewingDate = new Date(document.querySelector('input.date').value);
+						var startToViewOffset =  viewingDate - startDate;
+						if(!(viewingDate instanceof Date && !isNaN(viewingDate))) startToViewOffset = 0;
+						var msDuration = (parseInt(duration.seconds) + (parseInt(duration.minutes) + (parseInt(duration.hours) + parseInt(duration.days) * 24) * 60) * 60) *1000;
+
+						document.querySelector('div.result').innerHTML = startDate.toString() + " is stream start.<br />";
+						document.querySelector('div.result').innerHTML += viewingDate.toString() + " is inputted view time.<br />";
+						document.querySelector('div.result').innerHTML += (durationShow(startToViewOffset)).toString() + " is video offset.<br />";
+						document.querySelector('div.result').innerHTML += (durationShow(msDuration)).toString() + " is video length.<br />";
+						document.querySelector('div.result').innerHTML += "<a href=\"https://youtu.be/"+ urlString + "?t=" + ((startToViewOffset)/1000) +"\" target=\"_blank\">visit offset here.</a> <br />";
+					}
+					else
+					{
+						document.querySelector('div.result').innerHTML = "API is broken.";
+					}
+				}
+				else
+				{
+					document.querySelector('div.result').innerHTML = "youtube URL is invalid.";
+				}
+			}
+
+			document.querySelector('input.date').value = ""
+		</script>
+	</body>
+</html>
